@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Things to Do in Taniti — Activities &amp; Tours</title>
+  <meta name="description" content="Hike the volcano, snorkel coral reefs, surf, zip-line through rainforest and dive into island culture. Filter Taniti activities by interest." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23138a9c'/%3E%3Ctext y='72' x='50' font-size='62' text-anchor='middle'%3E🌴%3C/text%3E%3C/svg%3E" />
+</head>
+<body data-page="activities.html">
+  <div id="site-header"></div>
+
+  <section class="page-hero ph-activities">
+    <div class="container">
+      <p class="crumbs"><a href="index.html">Home</a> / Things to Do</p>
+      <h1>Things to do in Taniti</h1>
+      <p>Adventure, ocean, rainforest and culture — filter by what you love and start dreaming up your days.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filters" id="activityFilters" role="tablist" aria-label="Filter activities by category">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="adventure">Adventure</button>
+        <button class="chip" data-filter="ocean">Ocean &amp; Beach</button>
+        <button class="chip" data-filter="rainforest">Rainforest</button>
+        <button class="chip" data-filter="culture">Culture</button>
+        <button class="chip" data-filter="family">Family</button>
+      </div>
+
+      <div class="grid grid-3" id="activityGrid">
+
+        <article class="card reveal" data-cat="adventure">
+          <div class="card-media"><span class="card-tag">Adventure</span>
+            <img src="https://images.unsplash.com/photo-1465311440653-ba9b1d9b0f5b?auto=format&fit=crop&w=800&q=80" alt="Volcanic crater hike" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Mount Pulu Volcano Trek</h3>
+            <p>A ranger-guided climb through cloud forest to the rim of the island's active volcano, with steaming vents and panoramic summit views.</p>
+            <div class="card-meta"><span>⏱️ 6–8 hrs</span><span>📈 Challenging</span></div>
+            <div class="card-foot"><span class="price">T$95 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="ocean family">
+          <div class="card-media"><span class="card-tag">Ocean</span>
+            <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=80" alt="Snorkeling over reef" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Coral Coast Snorkel Safari</h3>
+            <p>Boat out to the sheltered reefs of the Coral Coast and drift among turtles, rays and rainbow reef fish. Gear and guide included.</p>
+            <div class="card-meta"><span>⏱️ 3 hrs</span><span>📈 Easy</span></div>
+            <div class="card-foot"><span class="price">T$60 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="ocean">
+          <div class="card-media"><span class="card-tag">Ocean</span>
+            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=80" alt="Surfer riding a wave" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Learn to Surf at Lagoon Point</h3>
+            <p>Gentle rollers and patient local instructors make Lagoon Point the perfect place to catch your first wave. Boards provided.</p>
+            <div class="card-meta"><span>⏱️ 2 hrs</span><span>📈 Beginner</span></div>
+            <div class="card-foot"><span class="price">T$45 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="rainforest adventure">
+          <div class="card-media"><span class="card-tag">Rainforest</span>
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Dense tropical rainforest" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Rainforest Canopy Zip-Line</h3>
+            <p>Soar through the treetops of the Rainforest Reserve on a network of zip-lines, with a naturalist pointing out birds and orchids below.</p>
+            <div class="card-meta"><span>⏱️ 3 hrs</span><span>📈 Moderate</span></div>
+            <div class="card-foot"><span class="price">T$70 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="rainforest family">
+          <div class="card-media"><span class="card-tag">Rainforest</span>
+            <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80" alt="Jungle waterfall" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Hidden Waterfalls Walk</h3>
+            <p>An easy, shaded trail to a series of jungle waterfalls and natural swimming pools — bring a swimsuit and a sense of wonder.</p>
+            <div class="card-meta"><span>⏱️ 4 hrs</span><span>📈 Easy</span></div>
+            <div class="card-foot"><span class="price">T$40 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="culture family">
+          <div class="card-media"><span class="card-tag">Culture</span>
+            <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=800&q=80" alt="Local market stalls" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Yasawa Harbor Market Tour</h3>
+            <p>Wander the colourful capital market with a local guide, sampling tropical fruit, fresh fish and handmade crafts along the way.</p>
+            <div class="card-meta"><span>⏱️ 2 hrs</span><span>📈 Easy</span></div>
+            <div class="card-foot"><span class="price">T$30 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="culture">
+          <div class="card-media"><span class="card-tag">Culture</span>
+            <img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=800&q=80" alt="Traditional dance performance" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Merean Feast &amp; Fire Dance</h3>
+            <p>An evening of traditional food cooked in an earth oven, storytelling, drumming and a spectacular fire-dance under the stars.</p>
+            <div class="card-meta"><span>⏱️ Evening</span><span>📈 All ages</span></div>
+            <div class="card-foot"><span class="price">T$85 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="ocean adventure">
+          <div class="card-media"><span class="card-tag">Ocean</span>
+            <img src="https://images.unsplash.com/photo-1682687220198-88e9bdea9931?auto=format&fit=crop&w=800&q=80" alt="Scuba diver underwater" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Discover Scuba Diving</h3>
+            <p>No experience needed — certified instructors guide you on your first breaths underwater above a vibrant, shallow reef.</p>
+            <div class="card-meta"><span>⏱️ Half day</span><span>📈 Beginner</span></div>
+            <div class="card-foot"><span class="price">T$120 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cat="family ocean">
+          <div class="card-media"><span class="card-tag">Family</span>
+            <img src="https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=800&q=80" alt="Sunset sailing catamaran" loading="lazy" /></div>
+          <div class="card-body">
+            <h3>Sunset Catamaran Cruise</h3>
+            <p>Glide across the harbor as the sky turns gold, with island music, tropical drinks and dolphins often joining for the ride.</p>
+            <div class="card-meta"><span>⏱️ 2.5 hrs</span><span>📈 All ages</span></div>
+            <div class="card-foot"><span class="price">T$65 <small>/ person</small></span><a class="btn btn-outline" href="plan.html">Book</a></div>
+          </div>
+        </article>
+
+        <p class="no-results" id="noResults" hidden>No activities match that filter yet — try another category.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Bundle your adventures &amp; save</h2>
+        <p>Tell us which experiences caught your eye and we'll build a custom itinerary with the best value for your dates.</p>
+        <a class="btn btn-lg" style="background:#fff;color:var(--coral-dk)" href="plan.html">Plan your trip →</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script>
+    // Activity category filtering
+    window.tanitiPageInit = function () {
+      var filters = document.getElementById("activityFilters");
+      var cards = Array.prototype.slice.call(document.querySelectorAll("#activityGrid [data-cat]"));
+      var none = document.getElementById("noResults");
+      if (!filters) return;
+      filters.addEventListener("click", function (e) {
+        var btn = e.target.closest(".chip");
+        if (!btn) return;
+        filters.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("active"); });
+        btn.classList.add("active");
+        var f = btn.getAttribute("data-filter");
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = f === "all" || card.getAttribute("data-cat").split(" ").indexOf(f) !== -1;
+          card.classList.toggle("is-hidden", !match);
+          if (match) shown++;
+        });
+        none.hidden = shown !== 0;
+      });
+    };
+  </script>
+</body>
+</html>

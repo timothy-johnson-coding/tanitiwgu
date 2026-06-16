@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact the Taniti Visitors Bureau</title>
+  <meta name="description" content="Questions about visiting Taniti? Reach the Taniti Visitors & Tourism Bureau by message, phone or email. Multilingual help available." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23138a9c'/%3E%3Ctext y='72' x='50' font-size='62' text-anchor='middle'%3E🌴%3C/text%3E%3C/svg%3E" />
+</head>
+<body data-page="contact.html">
+  <div id="site-header"></div>
+
+  <section class="page-hero ph-contact">
+    <div class="container">
+      <p class="crumbs"><a href="index.html">Home</a> / Contact</p>
+      <h1>Get in touch</h1>
+      <p>Our multilingual visitor team is here to help you plan the perfect Taniti escape.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split" style="align-items:start">
+
+        <!-- INFO -->
+        <div class="reveal">
+          <span class="eyebrow">Taniti Visitors &amp; Tourism Bureau</span>
+          <h2 style="margin-bottom:1.4rem">We'd love to hear from you</h2>
+          <ul class="info-list">
+            <li><span class="ic">📍</span><div><strong>Visitor Centre</strong><span>Harbor Road, Yasawa, Taniti</span></div></li>
+            <li><span class="ic">📞</span><div><strong>Phone</strong><span>+1 (808) 555-TANI · Mon–Sat, 8am–6pm island time</span></div></li>
+            <li><span class="ic">✉️</span><div><strong>Email</strong><span>visit@taniti.example</span></div></li>
+            <li><span class="ic">🏥</span><div><strong>Emergencies</strong><span>Dial 111 · Taniti General Hospital, multilingual staff 24/7</span></div></li>
+            <li><span class="ic">🌐</span><div><strong>Languages</strong><span>English · Merean · 日本語 · Español</span></div></li>
+          </ul>
+
+          <div style="margin-top:2rem">
+            <iframe class="map-embed" title="Yasawa, Taniti location" loading="lazy" style="height:300px"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=160.0%2C-20.0%2C185.0%2C-5.0&layer=mapnik"></iframe>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="reveal">
+          <div class="form-success" id="contactSuccess" role="status">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><strong>Message sent! 🌺</strong><p style="margin-top:.3rem;font-size:.95rem">Thanks for reaching out — we'll reply within one business day.</p></div>
+          </div>
+
+          <form class="form-card" id="contactForm" novalidate>
+            <h2 style="margin-bottom:1.4rem">Send us a message</h2>
+            <div class="form-grid">
+              <div class="field col-2">
+                <label for="cname">Name <span class="req">*</span></label>
+                <input id="cname" name="cname" type="text" autocomplete="name" required />
+                <span class="err" data-err></span>
+              </div>
+              <div class="field">
+                <label for="cemail">Email <span class="req">*</span></label>
+                <input id="cemail" name="cemail" type="email" autocomplete="email" required />
+                <span class="err" data-err></span>
+              </div>
+              <div class="field">
+                <label for="ctopic">Topic</label>
+                <select id="ctopic" name="ctopic">
+                  <option>General enquiry</option>
+                  <option>Booking &amp; reservations</option>
+                  <option>Activities &amp; tours</option>
+                  <option>Accessibility</option>
+                  <option>Press &amp; media</option>
+                </select>
+              </div>
+              <div class="field col-2">
+                <label for="cmsg">Message <span class="req">*</span></label>
+                <textarea id="cmsg" name="cmsg" placeholder="How can we help?" required></textarea>
+                <span class="err" data-err></span>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" style="margin-top:.4rem">Send message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <script src="js/main.js"></script>
+  <script>
+    window.tanitiPageInit = function (ctx) {
+      var form = document.getElementById("contactForm");
+      if (!form) return;
+      function setError(input, msg) {
+        var field = input.closest(".field");
+        field.classList.toggle("invalid", !!msg);
+        var span = field.querySelector("[data-err]");
+        if (span) span.textContent = msg || "";
+      }
+      function validate(input) {
+        var v = input.value.trim();
+        if (input.hasAttribute("required") && !v) { setError(input, "This field is required."); return false; }
+        if (input.type === "email" && v && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { setError(input, "Enter a valid email."); return false; }
+        setError(input, "");
+        return true;
+      }
+      form.querySelectorAll("[required]").forEach(function (i) {
+        i.addEventListener("blur", function () { validate(i); });
+      });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = true, bad = null;
+        form.querySelectorAll("[required]").forEach(function (i) { if (!validate(i)) { ok = false; bad = bad || i; } });
+        if (!ok) { bad && bad.focus(); ctx.toast("Please complete the required fields."); return; }
+        document.getElementById("contactSuccess").classList.add("show");
+        ctx.toast("Message sent! 🌴");
+        form.reset();
+        document.getElementById("contactSuccess").scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    };
+  </script>
+</body>
+</html>
