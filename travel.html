@@ -22,6 +22,60 @@
     </div>
   </section>
 
+  <!-- TRANSPORTATION DASHBOARD (added per Section D usability testing) -->
+  <section class="section section--ocean" id="dashboard">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Transportation Dashboard</span>
+        <h2>Getting around made easy</h2>
+        <p class="lead">Select a transport type for live hours, fares and rules — plus a transportation map and on-the-ground safety tips.</p>
+      </div>
+
+      <div class="dashboard reveal">
+        <!-- LEFT: filter + details + legal advisory -->
+        <div>
+          <div class="dash-panel" style="margin-bottom:1.2rem">
+            <div class="dash-panel-title">Transit Filter</div>
+            <div class="transit-filter" id="transitFilter">
+              <button class="transit-btn active" data-t="bus" type="button">Taniti City Bus Lines</button>
+              <button class="transit-btn" data-t="shuttle" type="button">Rural Island Shuttle</button>
+              <button class="transit-btn" data-t="taxi" type="button">Certified Taxi Services</button>
+              <button class="transit-btn" data-t="bike" type="button">Bike / Scooter Rentals</button>
+            </div>
+            <div class="transit-details" id="transitDetails" aria-live="polite"><!-- populated by JS --></div>
+          </div>
+
+          <div class="advisory">
+            <strong>⚠️ Legal Advisory</strong>
+            <p>Bicycle helmets are strictly required by law on all Tanitian island roads.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: transportation map + travel safety tips -->
+        <div>
+          <div class="dash-panel" style="margin-bottom:1.2rem">
+            <div class="dash-panel-title">Transportation Map</div>
+            <iframe class="map-embed" title="Taniti transportation map" loading="lazy" style="height:300px"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=160.0%2C-20.0%2C185.0%2C-5.0&layer=mapnik"></iframe>
+            <p class="hint" style="text-align:center;margin-top:.6rem">Bus, shuttle and ferry routes converge on Yasawa Harbor.</p>
+          </div>
+
+          <div class="dash-panel">
+            <div class="dash-panel-title">Travel Safety Tips</div>
+            <ul class="safety-tips">
+              <li>Keep bags zipped and close to your body in crowded markets.</li>
+              <li>Avoid carrying large amounts of cash — cards are accepted at most hotels and restaurants.</li>
+              <li>Use only certified taxis, identifiable by the blue harbor decal on the windshield.</li>
+              <li>Always wear a helmet on bikes and scooters — it's required by law.</li>
+              <li>Swim only at flagged beaches and obey all volcano-trail closure signs.</li>
+              <li>Save the emergency numbers: dial <strong>111</strong>, or reach Taniti General Hospital (multilingual staff, 24/7).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- GETTING HERE -->
   <section class="section">
     <div class="container split">
@@ -121,5 +175,38 @@
 
   <div id="site-footer"></div>
   <script src="js/main.js"></script>
+  <script>
+    // Transportation Dashboard — transit filter (added per Section D usability testing)
+    window.tanitiPageInit = function () {
+      var wrap = document.getElementById("transitFilter");
+      var out = document.getElementById("transitDetails");
+      if (!wrap || !out) return;
+      var DATA = {
+        bus: { title: "Taniti City Bus Lines", desc: "Affordable loop service linking Yasawa, the Coral Coast and major trailheads.",
+          rows: [["Hours", "9:00am – 11:00pm"], ["Frequency", "Every 20 minutes"], ["Fare", "T$2 per ride (cash)"]] },
+        shuttle: { title: "Rural Island Shuttle", desc: "Connects outlying villages, beaches and the Rainforest Reserve.",
+          rows: [["Hours", "11:00am – 9:00pm"], ["Frequency", "Every 30 minutes"], ["Fare", "T$4 per ride"]] },
+        taxi: { title: "Certified Taxi Services", desc: "Metered taxis wait at the airport and harbor; agree fares for longer trips.",
+          rows: [["Hours", "24 hours"], ["Base fare", "T$5 + T$2 / mile"], ["Identify by", "Blue harbor decal"]] },
+        bike: { title: "Bike / Scooter Rentals", desc: "The most popular way to explore the island independently.",
+          rows: [["Rate", "$15 USD per hour"], ["Minimum", "2-hour minimum"], ["Required", "Helmet (by law)"]] }
+      };
+      function render(key) {
+        var d = DATA[key]; if (!d) return;
+        var rows = d.rows.map(function (r) {
+          return '<div class="row"><span>' + r[0] + '</span><strong>' + r[1] + "</strong></div>";
+        }).join("");
+        out.innerHTML = "<h4>" + d.title + "</h4><p>" + d.desc + "</p>" + rows;
+      }
+      wrap.addEventListener("click", function (e) {
+        var b = e.target.closest(".transit-btn");
+        if (!b) return;
+        wrap.querySelectorAll(".transit-btn").forEach(function (x) { x.classList.remove("active"); });
+        b.classList.add("active");
+        render(b.getAttribute("data-t"));
+      });
+      render("bus");
+    };
+  </script>
 </body>
 </html>

@@ -99,6 +99,63 @@
     </div>
   </section>
 
+  <!-- ACTIVITY PLANNING DASHBOARD (added per Section D usability testing) -->
+  <section class="section section--ocean" id="planner">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Activity Planning Dashboard</span>
+        <h2>Build your island itinerary</h2>
+        <p class="lead">Interactive itinerary builder with automatic national-holiday sync — so you never plan a tour on a day everything's closed.</p>
+      </div>
+
+      <!-- National Holiday Alert -->
+      <div class="alert-banner reveal" role="alert" style="margin-bottom:1.6rem">
+        <span class="ico">⚠️</span>
+        <span><strong>National Holiday Alert:</strong> Wednesday, June 3rd is a Tanitian National Holiday. Local attractions, grocery stores and restaurants will be closed, and tours on this date are unavailable.</span>
+      </div>
+
+      <div class="dashboard reveal" style="grid-template-columns:1fr 1fr">
+        <!-- Activity List with holiday-aware closed state -->
+        <div class="dash-panel">
+          <div class="dash-panel-title">Activity List</div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div><div class="name">Mount Pulu Volcano Trek</div><div class="time">Tue–Sun · 7:00am–3:00pm</div></div>
+              <a class="btn btn-primary" href="plan.html">Book</a>
+            </div>
+            <div class="activity-item">
+              <div><div class="name">Coral Coast Snorkel Safari</div><div class="time">Daily · 9:00am–12:00pm</div></div>
+              <a class="btn btn-primary" href="plan.html">Book</a>
+            </div>
+            <div class="activity-item closed">
+              <div><div class="name">Yasawa Harbor Market Tour</div><div class="time">Wed, Jun 3 · Unavailable</div></div>
+              <span class="closed-tag">⚠️ Closed — Holiday</span>
+            </div>
+            <div class="activity-item closed">
+              <div><div class="name">Merean Feast &amp; Fire Dance</div><div class="time">Wed, Jun 3 · Unavailable</div></div>
+              <span class="closed-tag">⚠️ Closed — Holiday</span>
+            </div>
+            <div class="activity-item">
+              <div><div class="name">Sunset Catamaran Cruise</div><div class="time">Daily · 5:00pm–7:30pm</div></div>
+              <a class="btn btn-primary" href="plan.html">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Calendar -->
+        <div class="dash-panel">
+          <div class="dash-panel-title">Activity Calendar</div>
+          <div class="calendar">
+            <div class="cal-head">June 2026</div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-legend"><span><span class="dot"></span>National holiday — attractions closed</span></div>
+          </div>
+          <p class="hint" style="text-align:center;margin-top:.8rem">Closed dates are automatically blocked when you book.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PLAN STEPS -->
   <section class="section">
     <div class="container">
@@ -167,5 +224,26 @@
 
   <div id="site-footer"></div>
   <script src="js/main.js"></script>
+  <script>
+    // Activity Calendar — June 2026, national holiday on the 3rd (per Section D usability testing)
+    window.tanitiPageInit = function () {
+      var grid = document.getElementById("calGrid");
+      if (!grid) return;
+      var dow = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+      var html = dow.map(function (d) { return '<div class="cal-dow">' + d + "</div>"; }).join("");
+      var firstIdx = 1;          // June 1, 2026 falls on a Monday
+      var daysInMonth = 30;
+      var holiday = 3;           // Wed, Jun 3
+      for (var i = 0; i < firstIdx; i++) html += '<div class="cal-day empty"></div>';
+      for (var day = 1; day <= daysInMonth; day++) {
+        if (day === holiday) {
+          html += '<div class="cal-day holiday" title="National Holiday — attractions closed">' + day + "</div>";
+        } else {
+          html += '<div class="cal-day">' + day + "</div>";
+        }
+      }
+      grid.innerHTML = html;
+    };
+  </script>
 </body>
 </html>

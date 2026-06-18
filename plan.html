@@ -73,6 +73,13 @@
                 <span class="err" data-err></span>
               </div>
 
+              <div class="field col-2" id="holidayWarnWrap" hidden style="margin:0">
+                <div class="alert-banner compact" role="alert">
+                  <span class="ico">⚠️</span>
+                  <span><strong>Heads up:</strong> your dates include <strong>Wednesday, June 3rd</strong>, a Tanitian National Holiday. Attractions, shops and tours will be closed that day — plan rest or beach time instead.</span>
+                </div>
+              </div>
+
               <div class="field">
                 <label for="adults">Adults <span class="req">*</span></label>
                 <input id="adults" name="adults" type="number" min="1" max="12" value="2" required />
@@ -190,6 +197,13 @@
         $("sumActs").textContent = money(actCost);
         $("sumTransfer").textContent = money(transfer);
         $("sumTotal").textContent = money(total);
+
+        // Holiday-aware booking blocker (per Section D usability testing)
+        var HOLIDAY = "2026-06-03";  // Wed, Jun 3 — Tanitian National Holiday
+        var a = $("arrive").value, d = $("depart").value;
+        var hitsHoliday = a && d && a <= HOLIDAY && HOLIDAY <= d;
+        $("holidayWarnWrap").hidden = !hitsHoliday;
+
         return { nights: n, total: total, pax: pax };
       }
 

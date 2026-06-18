@@ -466,6 +466,87 @@ p  { color: var(--ink-soft); }
 .reveal.in { opacity: 1; transform: none; }
 
 /* ==========================================================================
+   Dashboards — added per Section D guerrilla usability testing
+   (Transportation Dashboard + Activity Planning Dashboard)
+   ========================================================================== */
+.dashboard { display: grid; grid-template-columns: 360px 1fr; gap: 1.6rem; align-items: start; }
+.dash-panel { background: var(--cream-3); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.5rem; }
+.dash-panel-title {
+  font-family: var(--font-head); text-transform: uppercase; letter-spacing: .12em;
+  font-size: 1.1rem; color: var(--terracotta-dk); text-align: center; font-weight: 600;
+  margin-bottom: 1.1rem;
+}
+
+/* Transit filter */
+.transit-filter { display: grid; gap: .6rem; margin-bottom: 1.3rem; }
+.transit-btn {
+  width: 100%; text-align: center; background: var(--clay-lt); border: 1.5px solid var(--clay);
+  color: var(--brown); padding: .8rem 1rem; border-radius: var(--radius-pill);
+  font-family: var(--font-body); font-weight: 600; font-size: 1.02rem; transition: all .2s;
+}
+.transit-btn:hover { background: var(--clay); }
+.transit-btn.active { background: var(--terracotta); color: var(--cream-2); border-color: var(--terracotta); }
+
+.transit-details { background: var(--terracotta); color: var(--cream-2); border-radius: var(--radius); padding: 1.4rem; text-align: center; }
+.transit-details h4 { color: #fff; font-family: var(--font-head); font-size: 1.4rem; margin-bottom: .3rem; }
+.transit-details > p { color: rgba(255,255,255,.9); margin-bottom: 1rem; font-size: .98rem; }
+.transit-details .row { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.2); font-size: .98rem; text-align: left; }
+.transit-details .row:last-child { border-bottom: 0; }
+.transit-details .row span { color: rgba(255,255,255,.78); }
+.transit-details .row strong { color: #fff; }
+
+/* Travel safety tips (filled empty-state per Tester 2) */
+.safety-tips { list-style: none; padding: 0; display: grid; gap: .85rem; }
+.safety-tips li { display: flex; gap: .7rem; align-items: flex-start; color: var(--ink-soft); font-size: 1.02rem; }
+.safety-tips li::before {
+  content: "🛡️"; flex: none; font-size: 1rem; line-height: 1.5;
+}
+
+/* National holiday alert banner (per Tester 3) */
+.alert-banner {
+  display: flex; gap: .85rem; align-items: flex-start;
+  background: #f7e2dd; border: 1.5px solid var(--red); border-left: 5px solid var(--red);
+  border-radius: var(--radius); padding: 1rem 1.2rem; color: #8a241a;
+}
+.alert-banner .ico { font-size: 1.4rem; line-height: 1.2; flex: none; }
+.alert-banner strong { color: var(--red); }
+.alert-banner.compact { font-size: .95rem; padding: .8rem 1rem; }
+
+/* Activity list with holiday-aware closed state */
+.activity-list { display: grid; gap: .7rem; }
+.activity-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  background: var(--clay-lt); border: 1.5px solid var(--clay); border-radius: var(--radius);
+  padding: .85rem 1.1rem;
+}
+.activity-item .name { font-weight: 600; color: var(--brown); font-size: 1.05rem; }
+.activity-item .time { font-size: .9rem; color: var(--terracotta-dk); }
+.activity-item .btn { padding: .5rem 1.1rem; font-size: .85rem; }
+.activity-item.closed { background: #e4dccf; border-color: #cdbda6; }
+.activity-item.closed .name { color: var(--muted); text-decoration: line-through; }
+.activity-item.closed .time { color: var(--red); font-weight: 600; }
+.closed-tag {
+  background: var(--red); color: #fff; font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; padding: .35rem .7rem;
+  border-radius: var(--radius-pill); display: inline-flex; gap: .3rem; align-items: center; white-space: nowrap;
+}
+
+/* Activity calendar */
+.calendar { background: var(--cream-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; }
+.cal-head { text-align: center; font-family: var(--font-head); font-size: 1.4rem; color: var(--terracotta-dk); margin-bottom: .8rem; font-weight: 600; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .3rem; }
+.cal-dow { text-align: center; font-size: .72rem; font-weight: 700; text-transform: uppercase; color: var(--muted); padding: .3rem 0; font-family: var(--font-body); letter-spacing: .04em; }
+.cal-day { text-align: center; padding: .55rem 0; border-radius: 8px; font-size: .98rem; color: var(--ink); background: var(--cream-3); }
+.cal-day.empty { visibility: hidden; background: none; }
+.cal-day.holiday { background: var(--red); color: #fff; font-weight: 700; }
+.cal-legend { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; font-size: .85rem; color: var(--muted); flex-wrap: wrap; }
+.cal-legend .dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; background: var(--red); margin-right: .35rem; vertical-align: middle; }
+
+@media (max-width: 860px) {
+  .dashboard { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 @media (max-width: 980px) {
